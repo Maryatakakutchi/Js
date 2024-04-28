@@ -1,32 +1,47 @@
-/*
-Assessment Requirements
-1. Create a variable that can hold a number of NFT's. What type of variable might this be?
-2. Create an object inside your mintNFT function that will hold the metadata for your NFTs. 
-   The metadata values will be passed to the function as parameters. When the NFT is ready, 
-   you will store it in the variable you created in step 1
-3. Your listNFTs() function will print all of your NFTs metadata to the console (i.e. console.log("Name: " + someNFT.name))
-4. For good measure, getTotalSupply() should return the number of NFT's you have created
-*/
+const NFTs = [];
 
-// create a variable to hold your NFT's
+// Function to mint NFTs
+function mintNFT(_name, _colorType, _vehiclesType, _placeType,_accessories) {
+    const NFT = {
+        "name": _name,
+        "colorType": _colorType,
+        "vehiclesType": _vehiclesType,
+        "placeType": _placeType,
+        "accessories":_accessories
+    };
 
-// this function will take in some values as parameters, create an
-// NFT object using the parameters passed to it for its metadata, 
-// and store it in the variable above.
-function mintNFT () {
-
+    NFTs.push(NFT);
+    console.log("Minted: " + _name);
+    console.log("---------------------------")
 }
 
-// create a "loop" that will go through an "array" of NFT's
-// and print their metadata with console.log()
-function listNFTs () {
-
+// Function to list NFTs
+function listNFTs() {
+    console.log(">> List of NFTs <<");
+    for (let i = 0; i < NFTs.length; i++) {
+        const NFT = NFTs[i]; 
+        // Fetching each NFT object
+        console.log("Name: " + NFT.name);
+        console.log("color: " + NFT.colorType);
+        console.log("vehicles: " + NFT.vehiclesType);
+        console.log("placeType: " + NFT.placeType);
+        console.log("accessories: " + NFT.accessories);
+        console.log("---------------------------");
+    };
 }
 
-// print the total number of NFTs we have minted to the console
+// Function to get total supply of NFTs
 function getTotalSupply() {
-
+    console.log("Total Supply: " + NFTs.length);
 }
+
+// Minting at least three NFTs
 
 // call your functions below this line
+mintNFT("NFT 1", "Red", "Truck ", "School", "Hats");
+mintNFT("NFT 2", "Blue", "Car", "Church", "Watches");
+mintNFT("NFT 3", "Pink", "Bus", "Bank", "Belts");
 
+// Listing NFTs and getting total supply
+listNFTs();
+getTotalSupply();
